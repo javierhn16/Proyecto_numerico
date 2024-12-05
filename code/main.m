@@ -52,7 +52,7 @@ C_exact = black_scholes_exact(linspace(0, Smax, M+1), K, T, r, sigma);
 figure;
 plot(S_implicit, C_exact, 'k-', 'DisplayName', 'Solución exacta', 'LineWidth', 3);
 hold on;
-plot(S_implicit, C_implicit, 'b--', 'DisplayName', 'Solución método implícito', 'LineWidth', 2);
+plot(S_implicit, C_implicit, 'b-', 'DisplayName', 'Solución método implícito', 'LineWidth', 1);
 plot(S_implicit, C_explicit, 'r--', 'DisplayName', 'Solución método explícito', 'LineWidth', 2);
 xlabel('Precio del activo subyacente');
 ylabel('Precio de la opción');
@@ -72,4 +72,15 @@ xlabel('Precio del activo subyacente');
 ylabel('Error');
 legend show;
 title('Error en las aproximaciones numéricas según el método utilizado');
+grid on;
+
+%% Malla de puntos
+
+[t_grid, S_grid] = meshgrid(t_implicit, S_implicit);
+
+figure;
+plot(t_grid, S_grid, 'k.'); 
+xlabel('Tiempo (años)');
+ylabel('Precio del activo subyacente');
+title('Malla de puntos');
 grid on;
